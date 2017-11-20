@@ -30,7 +30,8 @@ public class SegmentClipperTest {
 				points.add(new PointL(pX, pY));
 			}
 		};
-		final SegmentClipper segmentClipper = new SegmentClipper(-600, -600, 1400, 1400, clippable);
+		final SegmentClipper segmentClipper = new SegmentClipper();
+		segmentClipper.set(-600, -600, 1400, 1400, clippable);
 
 		clippable.init();
 		segmentClipper.clip(new RectL(-2146, -2152, -145, -141));

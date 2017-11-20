@@ -44,7 +44,7 @@ class LinearRing implements SegmentClipper.SegmentClippable{
 	private final ArrayList<GeoPoint> mOriginalPoints = new ArrayList<>();
 	private final ArrayList<PointL> mProjectedPoints = new ArrayList<>();
 	private final PointL mLatestPathPoint = new PointL();
-	private SegmentClipper mSegmentClipper;
+	private final SegmentClipper mSegmentClipper = new SegmentClipper();
 	private final Path mPath;
 	private boolean mIsNextAMove;
 	private boolean mPrecomputed;
@@ -324,11 +324,9 @@ class LinearRing implements SegmentClipper.SegmentClippable{
 	/**
 	 * @since 6.0.0
 	 * Mandatory use before clipping.
-	 * Possible optimization: if we're dealing with the same border values,
-	 * we can use the same SegmentClipper instead of constructing a new one at each canvas draw.
 	 */
 	public void setClipArea(final long pXMin, final long pYMin, final long pXMax, final long pYMax) {
-		mSegmentClipper = new SegmentClipper(pXMin, pYMin, pXMax, pYMax, this);
+		mSegmentClipper.set(pXMin, pYMin, pXMax, pYMax, this);
 	}
 
 	/**

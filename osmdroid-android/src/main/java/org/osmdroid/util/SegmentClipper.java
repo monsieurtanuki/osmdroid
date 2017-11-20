@@ -18,16 +18,30 @@ public class SegmentClipper {
     private final PointL mOptimIntersection1 = new PointL();
     private final PointL mOptimIntersection2 = new PointL();
 
-    private final long mXMin;
-    private final long mYMin;
-    private final long mXMax;
-    private final long mYMax;
-    private final SegmentClippable mSegmentClippable;
+    private long mXMin;
+    private long mYMin;
+    private long mXMax;
+    private long mYMax;
+    private SegmentClippable mSegmentClippable;
     private final long[] cornerX = new long[4];
     private final long[] cornerY = new long[4];
 
+    /**
+     * @since 6.0.0
+     */
+    public SegmentClipper() {}
+
+    @Deprecated
     public SegmentClipper(final long pXMin, final long pYMin, final long pXMax, final long pYMax,
                           final SegmentClippable pSegmentClippable) {
+        set(pXMin, pYMin, pXMax, pYMax, pSegmentClippable);
+    }
+
+    /**
+     * @since 6.0.0
+     */
+    public void set(final long pXMin, final long pYMin, final long pXMax, final long pYMax,
+                    final SegmentClippable pSegmentClippable) {
         mXMin = pXMin;
         mYMin = pYMin;
         mXMax = pXMax;
